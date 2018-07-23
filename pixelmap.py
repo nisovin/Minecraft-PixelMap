@@ -6,8 +6,8 @@ from PIL import Image
 import traceback
 import time
 
-regionPath = "/home/game/gameserver/world/region/"
-outputPath = "/home/game/map/"
+regionPath = "/path/to/server/world/region/"
+outputPath = "/path/to/output/folder/"
 useHeightmap = "WORLD_SURFACE" # WORLD_SURFACE / LIGHT_BLOCKING / MOTION_BLOCKING / MOTION_BLOCKING_NO_LEAVES
 
 def main():

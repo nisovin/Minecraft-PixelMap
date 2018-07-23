@@ -20,3 +20,8 @@ You'll need to install Python. Then you will need the [NBT library by twoolie](h
 The easiest way to get this is to use PIP (```pip install NBT```).
 
 You will also want to change the path variables at the top of the python script.
+
+Example
+-------
+
+![Example Region Image](https://i.imgur.com/D3ID94B.png)
