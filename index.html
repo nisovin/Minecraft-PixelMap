@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+<head>
+
+<title>Minecraft World Map</title>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="images.js"></script>
+
+
+</head>
+
+<body style="margin:0;padding:0">
+
+<div id="overlay" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; z-index: 100; background: rgba(0,0,0,0); cursor: crosshair"></div>
+
+<div id="map" style="position: relative; left: 4000; top: 2000"></div>
+
+<div id="coords" style="position: fixed; bottom: 0; right: 0; padding: 5px; background: black; color: white; font-weight: bold"></div>
+
+<script>
+for (var i = 0; i < images.length; i++) {
+	var s = images[i].split('.');
+	var x = parseInt(s[1]) * 16 * 32;
+	var y = parseInt(s[2]) * 16 * 32;
+	var img = $('<img src="' + images[i] + '" style="position: absolute; width: 512px; height: 512px; left: ' + x + 'px; top: ' + y + 'px">');
+	$("#map").append(img);
+}
+setTimeout(function() {
+	window.scrollTo(2000, 2500);
+}, 100);
+
+$(document).mousemove(function(e) {
+	var x = e.pageX - 4000;
+	var y = e.pageY - 2000;
+	$("#coords").text(x+','+y);
+});
+
+var down = false;
+var winScrollX = 0;
+var winScrollY = 0;
+var mouseStartX = 0;
+var mouseStartY = 0;
+
+$("#overlay").mousedown(function(e) {
+	mouseStartX = e.offsetX;
+	mouseStartY = e.offsetY;
+	winScrollX = window.scrollX;
+	winScrollY = window.scrollY;
+	down = true;
+}).mousemove(function(e) {
+	if (down) {
+		x = winScrollX - (e.offsetX - mouseStartX);
+		y = winScrollY - (e.offsetY - mouseStartY);
+		window.scrollTo(x, y);
+	}
+}).mouseup(function(e) {
+	down = false;
+});
+
+</script>
+
+</body>
+
+</html>
